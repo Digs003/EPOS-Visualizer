@@ -1,0 +1,182 @@
+/* =========================================================
+   EPOS Web Visualizer — Global Design System
+   Dark navy theme with glassmorphism panels
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-base:        #0d0f1a;
+  --bg-surface:     #141728;
+  --bg-glass:       rgba(20, 23, 40, 0.72);
+  --bg-glass-hover: rgba(30, 35, 60, 0.85);
+  --border-glass:   rgba(255, 255, 255, 0.08);
+  --border-active:  rgba(130, 100, 255, 0.45);
+
+  --accent:         #7c5dfa;
+  --accent-light:   #a388ff;
+  --accent-glow:    rgba(124, 93, 250, 0.35);
+  --accent-2:       #4fd1c5;
+
+  --text-primary:   #e8eaf6;
+  --text-secondary: #8892b0;
+  --text-muted:     #4a5280;
+
+  --success:  #4ade80;
+  --warning:  #fbbf24;
+  --danger:   #f87171;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-base);
+  background-image:
+    radial-gradient(ellipse at 20% 0%,  rgba(124, 93, 250, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(79, 209, 197, 0.08) 0%, transparent 60%);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Utility: glass panel ---- */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-glass);
+}
+
+/* ---- Scrollbars ---- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+
+/* ---- Select elements ---- */
+select {
+  appearance: none;
+  background: rgba(20, 23, 40, 0.9) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238892b0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 7px 30px 7px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  min-width: 90px;
+}
+select:hover  { border-color: var(--accent-light); }
+select:focus  {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ---- Buttons ---- */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+}
+.btn-ghost:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--accent-light);
+  color: var(--text-primary);
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid transparent;
+}
+.btn-primary:hover {
+  background: var(--accent-light);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+/* ---- Segmented controls ---- */
+.seg-group {
+  display: flex;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+  overflow: hidden;
+}
+.seg-btn {
+  padding: 7px 14px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  transition: all var(--transition);
+  white-space: nowrap;
+  border-right: 1px solid var(--border-glass);
+}
+.seg-btn:last-child { border-right: none; }
+.seg-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+.seg-btn:not(.active):hover {
+  background: var(--bg-glass-hover);
+  color: var(--text-primary);
+}
+
+/* ---- Labels ---- */
+.field-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+}
+
+/* ---- Tooltip ---- */
+.tooltip {
+  position: absolute;
+  background: rgba(13, 15, 26, 0.96);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--text-primary);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
