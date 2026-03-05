@@ -8,7 +8,7 @@ import styles from './TreeViewer.module.css'
 
 /**
  * Resolve the correct PNG path for given experiment + iteration + color mode.
- * Images are served from /Data/<expId>/radial_visualisation_new/
+ * Images are served from /data/<expId>/radial_visualisation_new/
  *
  * @param {string} expId     - experiment folder name
  * @param {number} iteration
@@ -17,7 +17,7 @@ import styles from './TreeViewer.module.css'
 function imagePath(expId, iteration, colorMode) {
   const type = colorMode === 'local' ? 'local_cost' : 'complex_cost'
   const iter = String(iteration).padStart(3, '0')
-  return `/Data/${expId}/radial_visualisation_new/tree_${type}_iter_${iter}.png`
+  return `/data/${expId}/radial_visualisation_new/tree_${type}_iter_${iter}.png`
 }
 
 /**
