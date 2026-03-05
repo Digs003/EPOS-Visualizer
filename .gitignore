@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 # Data / Large Files
-public/data/*
 __pycache__/
